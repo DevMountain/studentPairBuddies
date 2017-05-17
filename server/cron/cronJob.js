@@ -23,7 +23,7 @@ module.exports = {
             }
 
             for (var i = 0; i < cohorts.length; i++) {
-              var text = "Todays pairs are:\n";
+              var text = "@channel Todays pairs are:\n";
 
               if (cohorts[i].pairs.length > 0) {
                 for (var j = 0; j < cohorts[i].pairs.length; j++) {

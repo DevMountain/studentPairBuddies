@@ -1,5 +1,4 @@
 @import "../../../styles/colors"
-
 .cohorts
   box-sizing: border-box
   padding: 20px
@@ -10,11 +9,6 @@
   background-color: $queBlue
   height: calc(100vh - 63px);
   margin-top: 63px;
-  // .cohort-names:nth-child(odd)
-  //   background-color: grey !important
-  // .cohort-names:nth-child(even)
-  //   background-color: white !important
-
 nav 
   width: 100vw
   height: 63px
@@ -27,7 +21,6 @@ nav
   p 
     color: white
     font-size: 2em
-
 .container
   display: flex
   flex-direction: column
@@ -91,7 +84,8 @@ nav
   display: flex
   flex-direction: row
   justify-content: space-between
-  padding: 10px
+  padding-left: 1.5vw
+  padding-right: 1.5vw
   .middle
     text-align: center
   .fa
@@ -99,10 +93,10 @@ nav
     color: black
   #edit-btn
     background-color: inherit
-    z-index: 3
+    z-index: 5
   #delete-btn
     background-color: inherit
-    z-index: 3
+    z-index: 5
   .fa-times
     color: $queRed
 
@@ -116,3 +110,7 @@ nav
   display: flex
   align-items: center
   justify-content: center
+.click-link
+  width: 27.5vw;
+  display: flex;
+  justify-content: space-between;

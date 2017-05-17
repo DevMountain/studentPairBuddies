@@ -24,7 +24,7 @@
   <div class = "container">
 
     <div ng-repeat = "cohort in cohorts" ng-mouseover="cohortHover = true" ng-mouseleave="cohortHover = false">
-      <div class = "cohort-names" ng-class-even="'even'">
+      <div class = "cohort-names" ng-class-even="'even'" ui-sref="students({cohort_id: cohort._id})">
         <p>{{cohort.title}} </p>
         <p> {{cohort.slack_channel}} <input type="checkbox" ng-model="checkd" ng-change="updateSlackNotifications(cohort._id, checkd)"/></p>
           <div>

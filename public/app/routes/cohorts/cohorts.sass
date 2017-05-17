@@ -31,7 +31,7 @@ nav
 .container
   display: flex
   flex-direction: column
-  width: 50vw;
+  width: 70vw;
   height: 70vh;
   background-color: #FFFFFF
   overflow-y: auto
@@ -45,13 +45,11 @@ nav
   .right
     float: right
     margin-right: 5vw
-
-
 .add-cohort
   float: right
   position: absolute
   bottom: 0
-  right: 25vw
+  right: 15vw
   margin: 0
   top: 90vh
   font-size: 2em
@@ -86,7 +84,7 @@ nav
   display: flex
   align-items: center
   justify-content: center
-.even
+.even:nth-child(odd)
   background-color: grey
 .cohort-names
   align-items: center
@@ -101,8 +99,10 @@ nav
     color: black
   #edit-btn
     background-color: inherit
+    z-index: 3
   #delete-btn
     background-color: inherit
+    z-index: 3
   .fa-times
     color: $queRed
 

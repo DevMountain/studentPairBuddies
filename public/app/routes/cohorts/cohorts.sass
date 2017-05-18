@@ -7,37 +7,29 @@
   justify-content: center
   flex-direction: column
   background-color: $queBlue
-  height: calc(100vh - 63px);
-  margin-top: 63px;
+  height: calc(100vh - 10vh)
+  margin-top: 10vh
 nav 
   width: 100vw
-  height: 63px
+  height: 10vh
   position: absolute
   top: 0
   background-color: $queGrey
   display: flex
-  justify-content: center;
-  align-items: center;
+  justify-content: center
+  align-items: center
   p 
     color: white
     font-size: 2em
 .container
   display: flex
   flex-direction: column
-  width: 70vw;
-  height: 70vh;
+  width: 80vw
+  height: 60vh
   background-color: #FFFFFF
   overflow-y: auto
   overflow-x: hidden
   border-radius: 3px
-  p 
-    margin: 0node
-  .left
-    float: left
-    margin-left: 5vw
-  .right
-    float: right
-    margin-right: 5vw
 .add-cohort
   float: right
   position: absolute
@@ -64,14 +56,14 @@ nav
   width: 50vw
   height: 36vh
   background-color: white
-  margin-top: 63px
+  margin-top: 10vh
   border-radius: 10px
   padding: 5%
 .outer-modal
-  height: calc(100vh + 63px)
+  height: calc(100vh + 10vh)
   width: 100vw
   position: absolute
-  margin-top: -63px
+  margin-top: -10vh
   z-index: 1
   background-color: rgba(15, 15, 15, 0.89)
   display: flex
@@ -83,11 +75,8 @@ nav
   align-items: center
   display: flex
   flex-direction: row
-  justify-content: space-between
   padding-left: 1.5vw
   padding-right: 1.5vw
-  .middle
-    text-align: center
   .fa
     background-color: inherit
     color: black
@@ -99,18 +88,33 @@ nav
     z-index: 5
   .fa-times
     color: $queRed
-
 .update-modal
-  height: calc(100vh + 63px)
+  height: calc(100vh + 10vh)
   width: 100vw
   position: absolute
-  margin-top: -63px
+  margin-top: -10vh
   z-index: 1
   background-color: rgba(15, 15, 15, 0.89)
   display: flex
   align-items: center
   justify-content: center
-.click-link
-  width: 27.5vw;
-  display: flex;
-  justify-content: space-between;
+.third
+  width: 26.6666667vw
+  text-align: center
+.overall
+  width: 77vw
+  display: flex
+.background
+  background-color: $queGrey
+  width: 80vw
+  display: flex
+  justify-content: center
+#font-weight
+  color: white  
+  font-weight: 900
+.hidden-btn
+  position: absolute
+  margin-left: -7vw
+  margin-top: -10px
+  display: flex
+  justify-content: center

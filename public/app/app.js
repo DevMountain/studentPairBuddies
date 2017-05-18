@@ -12,7 +12,7 @@ angular.module("app", ["ui.router"])
 
       // HOME STATE
       .state('home', {
-        url: '/',
+        url: '/home',
         templateUrl: './app/routes/home/homeTmpl.html',
         controller: 'homeCtrl'
       })
@@ -25,6 +25,17 @@ angular.module("app", ["ui.router"])
         resolve: {
           cohorts: function(cohortService) {
             return cohortService.getCohorts();
+          },
+          user: function(loginService, $state){
+            return loginService.getCurrentUser().then(function(response){
+              if(!response.data){
+                $state.go('home')
+              }
+              return response.data;
+            })
+            .catch(function(err){
+              $state.go('home')
+            })
           }
         }
       })
@@ -37,6 +48,17 @@ angular.module("app", ["ui.router"])
         resolve: {
           pairs: function(cohortService, $stateParams) {
             return cohortService.getPairs($stateParams.cohort_id);
+          },
+          user: function(loginService, $state){
+            return loginService.getCurrentUser().then(function(response){
+              if(!response.data){
+                $state.go('home')
+              }
+              return response.data;
+            })
+            .catch(function(err){
+              $state.go('home')
+            })
           }
         }
       });
@@ -46,5 +68,5 @@ angular.module("app", ["ui.router"])
 
     // ASSIGN OTHERWISE
     // ============================================================
-    $urlRouterProvider.otherwise('/cohorts');
+    $urlRouterProvider.otherwise('/home');
   });

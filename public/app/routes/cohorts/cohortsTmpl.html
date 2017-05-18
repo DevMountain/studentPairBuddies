@@ -1,38 +1,31 @@
-<!--<div class="cohorts">
-  <form class="" ng-submit="addCohort(newCohort)">
-    <h1>New Cohort</h1>
-    Title: <input type="text" name="" value="" ng-model="newCohort.title">
-    Slack Channel: <input type="text" name="" value="" ng-model="newCohort.slack_channel">
-    <button type="submit" name="button">Add Cohort</button>
-  </form>
-  <hr><br>
-
-  <div class="cohort" ng-repeat="cohort in cohorts">
-    <a ui-sref="students({cohort_id: cohort._id})">{{cohort.title}} - {{cohort.slack_channel}}</a>
-    <input type="text" name="" value="" ng-model="cohort.title">
-    <input type="text" name="" value="" ng-model="cohort.slack_channel">
-    <button type="button" name="button" ng-click="updateCohort(cohort)">update</button>
-    <button type="button" name="button" ng-click="deleteCohort(cohort._id)">X</button>
-  </div>
-</div>-->
 <div class = "cohorts"> 
-
+  
   <nav>
     <p><b>COHORTS</b></p>
   </nav>
 
+  <div class="background">
+    <div class="overall">
+      <p class="third" id="font-weight" >COHORT</p>
+      <p class="third" id="font-weight">SLACK</p>
+      <p class="third" id="font-weight">NOTIFICATIONS</p>
+    </div>
+  </div>
+  
   <div class = "container">
-
-    <div ng-repeat = "cohort in cohorts" ng-mouseover="cohortHover = true" ng-mouseleave="cohortHover = false">
-
+    <div ng-init= "checkd = cohort.notify" ng-repeat = "cohort in cohorts" ng-mouseover="cohortHover = true" ng-mouseleave="cohortHover = false">
       <div class = "cohort-names" ng-class-even="'even'">
-        <div class = "click-link" ui-sref="students({cohort_id: cohort._id})">
-
-        <p>{{cohort.title}} </p>
-        <p> {{cohort.slack_channel}} <input type="checkbox" ng-model="checkd" ng-change="updateSlackNotifications(cohort._id, checkd)"/></p>
+        <div class="third" ui-sref="students({cohort_id: cohort._id})">
+          <p>{{cohort.title}} </p>
+        </div>
+        <div class="third" ui-sref="students({cohort_id: cohort._id})">
+          <p> {{cohort.slack_channel}} </p>
         </div> 
-          <div>
-            <div ng-show="cohortHover">
+        <div class="third">
+           <input type="checkbox" ng-model="checkd" ng-change="updateSlackNotifications(cohort._id, checkd)"/>
+        </div>
+        <div>
+            <div ng-show="cohortHover" class="hidden-btn">
               <button id="edit-btn" ng-click="openUpdateModal(cohort)">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
@@ -40,10 +33,9 @@
                 <i class="fa fa-times" aria-hidden="true"></i>
               </button>
             </div> 
-          </div>
+        </div>
       </div>
     </div>
-
   </div>
 
   <div class = "update-modal" ng-hide="switch">

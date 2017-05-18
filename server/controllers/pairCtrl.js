@@ -83,6 +83,7 @@ function pair(pairs) {
 module.exports = {
   pair: function (req, res) {
     var query = req ? req.query : {};
+    !req ? query.notify = true : null;
 
     Cohort.find(query, function(err, cohorts) {
       if (err)

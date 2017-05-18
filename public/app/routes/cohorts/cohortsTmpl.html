@@ -1,12 +1,16 @@
 <div class = "cohorts"> 
   
   <nav>
-    <p><b>COHORTS</b></p>
+    <p>COHORTS</p>
+    <div class="button-contain">
+      <button ng-click="logout()">Logout</button>
+      <button ng-click="openAddMentorModal()">Add Mentor</button>
+    </div>
   </nav>
 
   <div class="background">
     <div class="overall">
-      <p class="third" id="font-weight" >COHORT</p>
+      <p class="third" id="font-weight">COHORT</p>
       <p class="third" id="font-weight">SLACK</p>
       <p class="third" id="font-weight">NOTIFICATIONS</p>
     </div>
@@ -58,6 +62,18 @@
         Title: <input type="text" name="" value="" ng-model="newCohort.title">
         Slack Channel: <input type="text" name="" value="" ng-model="newCohort.slack_channel"><br>
         <button type="submit" name="button" ng-click="closeModal()">Add Cohort</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="outer-modal" ng-hide="mentorSwitch">
+    <div class="modal">
+      <button class="modal-close" ng-click="closeAddMentorModal()"><b>X</b></button>
+      <h1>Add Mentor</h1>
+      <form class="modal-form" ng-submit="register(newUser)">
+        UserName: <input type="text" name="" value="" ng-model="newUser.username">
+        Password: <input type="text" name="" value="" ng-model="newUser.password"><br>
+        <button type="submit" name="button" ng-click="closeAddMentorModal()">Add Mentor</button>
       </form>
     </div>
   </div>

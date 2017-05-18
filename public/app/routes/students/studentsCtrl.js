@@ -7,7 +7,6 @@ angular.module("app")
   	// ============================================================
   	$scope.cohort = pairs.data;
     $scope.pairs = $scope.cohort.pairs || [];
-    console.log('$scope.pairs: ', $scope.pairs);
     $scope.users = [];
     $scope.expand = false;
 

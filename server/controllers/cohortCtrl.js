@@ -35,10 +35,15 @@ module.exports = {
   },
   delete: function(req, res) {
     Cohort.findByIdAndRemove(req.params.id, function(err, cohort) {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).send(cohort);
+      if (err)
+        return res.status(500).send(err);
+
+      User.remove({cohort: req.params.id}, function() {
+        if (err)
+          return res.status(400).send(err);
+
+        return res.status(200).send('Cohort deleted successfully');
+      });
     });
   },
 

@@ -49,6 +49,7 @@ angular.module("app").controller("cohortsCtrl", function($scope, $state, cohorts
   }
 
   $scope.toggle = true;
+  $scope.mentorSwitch = true;
 
   $scope.openModal = function(){
      $scope.toggle = false;
@@ -67,8 +68,31 @@ angular.module("app").controller("cohortsCtrl", function($scope, $state, cohorts
     $scope.switch = true;
   };
 
+  $scope.openAddMentorModal = function(){
+    $scope.mentorSwitch = false;
+  }
+
+  $scope.closeAddMentorModal = function(){
+    $scope.mentorSwitch = true;
+  }
+
   $scope.updateSlackNotifications = function(id, value){
     cohortService.updateSlackNotifications(id, value);
+  }
+
+  $scope.register = function(user){
+    loginService.registerUser(user).then(function(response){
+      if(!response.data){
+        alert('Unable to create user')
+      } else {
+        console.log(response)
+        alert('User Created')
+        $scope.newUser = {}
+      }
+    })
+    .catch(function(err){
+      alert('Unable to create user')
+    })
   }
 
 });

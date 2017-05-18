@@ -7,7 +7,7 @@ passport.use(new LocalStrategy({
   usernameField: 'username',
   passwordField: 'password'
 }, function(username, password, done) {
-  User.findOne({ username: username })
+  User.findOne({ username: { $regex : new RegExp(username, "i") } })
   .exec(function(err, user) {
     if(err) done(err);
     if(!user) return done(null, false);

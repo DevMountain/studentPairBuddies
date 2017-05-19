@@ -7,6 +7,7 @@ For pairing up of students and randomizing for presentations
 3. `gulp` in new tab
 4. Add config file
 4. `nodemon`
+5. Using postman, hit the register endpoint and add a user with a name, username, and password
 
 server/config.js
 ```javascript

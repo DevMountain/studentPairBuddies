@@ -19,7 +19,9 @@ module.exports = {
   add: function(req, res) {
     if (!req.body.cohort)
       return res.status(400).send('No cohort selected');
-
+    if (!req.body.username){
+      req.body.username = req.body.name + req.body.cohort;
+    }
     User.find({cohort: req.body.cohort}, (err, users) => {
 
       req.body.partners = users.map(user => user._id);

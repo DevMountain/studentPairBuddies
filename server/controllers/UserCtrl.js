@@ -17,6 +17,7 @@ module.exports = {
     });
   },
   add: function(req, res) {
+    console.log("I'm hit")
     if (!req.body.cohort)
       return res.status(400).send('No cohort selected');
     if (!req.body.username){

@@ -20,6 +20,7 @@ module.exports = {
     if (!req.body.cohort)
       return res.status(400).send('No cohort selected');
     if (!req.body.username){
+      console.log(req.body);
       req.body.username = req.body.name + req.body.cohort;
     }
     User.find({cohort: req.body.cohort}, (err, users) => {

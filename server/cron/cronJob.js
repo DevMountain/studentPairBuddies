@@ -1,3 +1,4 @@
+
 var Cron = require('cron').CronJob;
 var axios = require('axios');
 var Cohort = require('./../models/cohort.js');
@@ -8,7 +9,7 @@ module.exports = {
   notify_cohorts: function() {
     console.log('Notification CRON initiated');
     new Cron(
-      '0 0 13 * * 1-5',
+      '0 0 15 * * 1-5',
       function () {
 
         Cohort
@@ -39,9 +40,9 @@ module.exports = {
                   channel: '#' + cohorts[i].slack_channel,
                   text: text
                 }
-
+		console.log(payload);
                 axios.post('https://hooks.slack.com/services/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', payload)
-                .then(function(response) {});
+                .then(function(response) {}).catch(err=>console.error(err));
               }
             }
 

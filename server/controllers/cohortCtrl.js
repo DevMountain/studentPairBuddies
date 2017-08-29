@@ -2,6 +2,7 @@
 // ============================================================
 var Cohort = require('./../models/cohort');
 var User = require('./../models/user');
+var cronJob = require('./../cron/cronJob');
 
 // EXPORT METHODS
 // ============================================================
@@ -62,6 +63,12 @@ module.exports = {
         }
         res.status(200).send(cohorts);
       });
+  },
+  slackPairs: function(req, res){
+    cronJob.notify_cohort(req.params.id).then(response=>{
+       res.send(response);
+    }).catch(err=>res.send(err));
+
   }
 
 };

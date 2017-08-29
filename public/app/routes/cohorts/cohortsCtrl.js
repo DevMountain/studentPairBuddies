@@ -80,6 +80,12 @@ angular.module("app").controller("cohortsCtrl", function($scope, $state, cohorts
     cohortService.updateSlackNotifications(id, value);
   }
 
+  $scope.slackCohort = function(id){
+    cohortService.slackCohort(id).then(e=>{
+      alert('Sent a message to :' + e.channel + ' of ' + e.text);
+    }).catch(err=>alert(err));
+  }
+
   $scope.register = function(user){
     loginService.registerUser(user).then(function(response){
       if(!response.data){

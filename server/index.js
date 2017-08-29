@@ -67,6 +67,7 @@ app.post('/api/cohort', cohortCtrl.create);
 app.put('/api/cohort/:id', cohortCtrl.update);
 app.delete('/api/cohort/:id', cohortCtrl.delete);
 app.get('/api/cohort/pairs', cohortCtrl.getPairs);
+app.get('/api/cohort/:id/slack', cohortCtrl.slackPairs);
 
 
 // CONNECTIONS //

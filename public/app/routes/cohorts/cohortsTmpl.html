@@ -1,5 +1,5 @@
-<div class = "cohorts"> 
-  
+<div class = "cohorts">
+
   <nav>
     <p>COHORTS</p>
     <div class="button-contain">
@@ -15,7 +15,7 @@
       <p class="third" id="font-weight">NOTIFICATIONS</p>
     </div>
   </div>
-  
+
   <div class = "container">
     <div ng-init= "checkd = cohort.notify" ng-repeat = "cohort in cohorts" ng-mouseover="cohortHover = true" ng-mouseleave="cohortHover = false">
       <div class = "cohort-names" ng-class-even="'even'">
@@ -24,7 +24,7 @@
         </div>
         <div class="third" ui-sref="students({cohort_id: cohort._id})">
           <p> {{cohort.slack_channel}} </p>
-        </div> 
+        </div>
         <div class="third">
            <input type="checkbox" ng-model="checkd" ng-change="updateSlackNotifications(cohort._id, checkd)"/>
         </div>
@@ -36,7 +36,8 @@
               <button id="delete-btn" ng-click="deleteCohort(cohort._id)">
                 <i class="fa fa-times" aria-hidden="true"></i>
               </button>
-            </div> 
+              <i ng-click = "slackCohort(cohort._id)" class="fa fa-bullhorn" aria-hidden="true"></i>
+            </div>
         </div>
       </div>
     </div>
@@ -81,4 +82,3 @@
   <button class="add-cohort" ng-click="openModal()">+</button>
 
 </div>
-

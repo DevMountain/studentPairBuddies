@@ -42,7 +42,7 @@ app.get('/api/logout', function(req, res, next) {
 
 // CRON //
 var cron = require('./cron/cronJob.js');
-cron.notify_cohorts();
+cron.cron_job();
 cron.pair_up_students();
 
 // CONTROLLERS //

@@ -4,7 +4,8 @@ module.exports = {
   sendSlackMessge(channel, message){
     var payload ={
       channel: channel,
-      text: message
+      text: message,
+      username: 'Slack Service'
     }
 
     axios.post('https://hooks.slack.com/services/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', payload)

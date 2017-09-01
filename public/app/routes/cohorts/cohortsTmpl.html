@@ -12,6 +12,7 @@
     <div class="overall">
       <p class="third" id="font-weight">COHORT</p>
       <p class="third" id="font-weight">SLACK</p>
+      <p class="third" id="font-weight">TIME</p>
       <p class="third" id="font-weight">NOTIFICATIONS</p>
     </div>
   </div>
@@ -25,12 +26,15 @@
         <div class="third" ui-sref="students({cohort_id: cohort._id})">
           <p> {{cohort.slack_channel}} </p>
         </div>
+        <div class="third" ui-sref="students({cohort_id: cohort._id})">
+          <p> <span ng-show="cohort.utcHour">{{(cohort.utcHour - utcOffset) % 24}} </span></p>
+        </div>
         <div class="third">
            <input type="checkbox" ng-model="checkd" ng-change="updateSlackNotifications(cohort._id, checkd)"/>
         </div>
         <div>
             <div ng-show="cohortHover" class="hidden-btn">
-              <button id="edit-btn" ng-click="openUpdateModal(cohort)">
+              <button id="edit-btn" ng-click="openUpdateModal(cohort); $parent.cohort=cohort;">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </button>
               <button id="delete-btn" ng-click="deleteCohort(cohort._id)">
@@ -47,9 +51,10 @@
     <div class = "modal">
       <button class= "modal-close" ng-click="closeUpdateModal()"><b>X</b></button>
       <h1>Update {{specCohort.title}}'s Cohort</h1>
-      <form class="modal-form" ng-submit="updateCohort(specCohort._id, cohort)">
-        Title: <input type="text" name="" value="" ng-model="cohort.title">
-        Slack Channel: <input type="text" name="" value="" ng-model="cohort.slack_channel"><br>
+      <form class="modal-form" ng-submit="updateCohort(specCohort._id, specCohort)">
+        Title: <input type="text" name="" value="" ng-model="specCohort.title">
+        Slack Channel: <input type="text" name="" value="" ng-model="specCohort.slack_channel"><br>
+        UTC Hour: Your UTC Offset ({{-utcOffset}}) <input type="number" name="" value="" ng-model="specCohort.utcHour"> UTC Time {{specCohort.utcHour}} - {{utcOffset}} = Local Time: {{(specCohort.utcHour - utcOffset) % 24}}<br>
         <button type="submit" name="button" ng-click="closeUpdateModal()">Update Cohort</button>
       </form>
     </div>
@@ -62,6 +67,8 @@
       <form class="modal-form" ng-submit="addCohort(newCohort)">
         Title: <input type="text" name="" value="" ng-model="newCohort.title">
         Slack Channel: <input type="text" name="" value="" ng-model="newCohort.slack_channel"><br>
+        UTC Time: Your UTC Offset ({{-utcOffset}})<input type="number" name="" value="" ng-model="newCohort.utcHour"> UTC Time {{newCohort.utcHour}} - {{utcOffset}} = Local Time: {{(newCohort.utcHour - utcOffset) % 24}}<br>
+
         <button type="submit" name="button" ng-click="closeModal()">Add Cohort</button>
       </form>
     </div>

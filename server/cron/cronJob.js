@@ -29,30 +29,31 @@ module.exports = {
         text = "@channel Today's pairs are:\n" + pairs.join("\n");
         slackService.sendSlackMessge('#' + cohort.slack_channel, text)
         resolve({text:text, channel:'#' + cohort.slack_channel});
+        console.log(text, cohort.slack_channel);
       })
     })
   },
   notify_cohorts: function() {
+    let hourTime = new Date().getUTCHours();
+
+    Cohort
+      .find({
+        notify: true,
+        utcHour: hourTime
+      })
+      .exec((err, cohorts)=>{
+        if (err) {
+          return console.log('Couldnt find pairs');
+        }
+        cohorts.forEach(module.exports.notify_cohort.bind(null, cohorts));
+        console.log('Pairs have been slacked');
+      })
+  },
+  cron_job: function(){
     console.log('Notification CRON initiated');
     new Cron(
-      '0 0 0 * * 1-5',
-      function() {
-        Cohort
-          .find({
-            notify: true
-          })
-          .populate({
-            path: 'pairs',
-            model: 'user'
-          })
-          .exec(function(err, cohorts) {
-            if (err) {
-              return console.log('Couldnt find pairs');
-            }
-            cohorts.forEach(this.notify_cohort);
-            console.log('Pairs have been slacked');
-          })
-      },
+      '0 0 * * * 1-5',
+      module.exports.notify_cohorts,
       null,
       true,
       ''
@@ -70,3 +71,5 @@ module.exports = {
     )
   }
 }
+
+module.exports.notify_cohorts();

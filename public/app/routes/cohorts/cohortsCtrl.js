@@ -27,7 +27,6 @@ angular.module("app").controller("cohortsCtrl", function($scope, $state, cohorts
   };
 
   $scope.updateCohort = function(id, cohort) {
-    console.log(cohort + " ID SHOULD BE HERE")
     cohortService.editCohort(id, cohort)
       .then(function(response) {
         $scope.getCohorts();
@@ -86,12 +85,13 @@ angular.module("app").controller("cohortsCtrl", function($scope, $state, cohorts
     }).catch(err=>alert(err));
   }
 
+  $scope.utcOffset = new Date().getTimezoneOffset()/60;
+
   $scope.register = function(user){
     loginService.registerUser(user).then(function(response){
       if(!response.data){
         alert('Unable to create user')
       } else {
-        console.log(response)
         alert('User Created')
         $scope.newUser = {}
       }

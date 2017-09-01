@@ -112,6 +112,7 @@ module.exports = {
             resetStudents(cohorts[i]._id);
 
           cohorts[i].pairs = pairUp(filteredStudents);
+          
         }
 
         cohorts.forEach((cohort, i, arr) => cohort.save({multi: true}, function(err, updatedCohort) {

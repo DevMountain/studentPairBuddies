@@ -1,5 +1,6 @@
 var Cohort = require('./../models/cohort.js');
 var User = require('./../models/user.js');
+var _ = require('underscore');
 
 function shuffle(a) {
   var j, x, i;
@@ -15,25 +16,16 @@ function shuffle(a) {
 function pairUp(arr) {
   var pairs = [];
 
-  arr = shuffle(arr);
+  arr = _.shuffle(arr);
 
-  for (var i = 0; i < arr.length; i++) {
-    for (var j = i + 1; j < arr.length; j++) {
-      if (arr[i].partners.indexOf(arr[j]._id) != -1 && arr[j].partners.indexOf(arr[i]._id) != -1) {
-        var two = arr.splice(j, 1)[0];
-        var one = arr.splice(i, 1)[0];
-        pairs.push([one, two]);
-        i--;
-        break;
-      }
+  return arr.reduce((all, cur)=>{
+    if (Array.isArray(all[all.length-1])){
+      all[all.length-1].push(cur);
+    }else{
+      all.push([cur]);
     }
-  }
-
-  if (arr.length == 1) {
-    pairs.push(arr);
-  }
-
-  return pairs;
+    return all
+  }, [])
 }
 
 function resetStudents(id) {
@@ -112,7 +104,7 @@ module.exports = {
             resetStudents(cohorts[i]._id);
 
           cohorts[i].pairs = pairUp(filteredStudents);
-          
+
         }
 
         cohorts.forEach((cohort, i, arr) => cohort.save({multi: true}, function(err, updatedCohort) {

@@ -71,5 +71,3 @@ module.exports = {
     )
   }
 }
-
-module.exports.notify_cohorts();

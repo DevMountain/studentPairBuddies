@@ -2,28 +2,19 @@ var Cohort = require('./../models/cohort.js');
 var User = require('./../models/user.js');
 var _ = require('underscore');
 
-function shuffle(a) {
-  var j, x, i;
-  for (i = a.length; i; i--) {
-    j = Math.floor(Math.random() * i);
-    x = a[i - 1];
-    a[i - 1] = a[j];
-    a[j] = x;
-  }
-  return a;
-}
-
 function pairUp(arr) {
   var pairs = [];
 
   arr = _.shuffle(arr);
+  console.log(arr);
 
   return arr.reduce((all, cur)=>{
-    if (Array.isArray(all[all.length-1])){
-      all[all.length-1].push(cur);
+    if (Array.isArray(all[all.length-1]) && all[all.length-1].length ==1){
+      all[all.length-1].push(cur._id);
     }else{
-      all.push([cur]);
+      all.push([cur._id]);
     }
+    console.log(all);
     return all
   }, [])
 }

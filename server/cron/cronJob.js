@@ -45,9 +45,9 @@ module.exports = {
         if (err) {
           return console.log('Couldnt find pairs');
         }
-        cohorts.forEach(module.exports.notify_cohort.bind(null, cohorts));
-        console.log('Pairs have been slacked');
-      })
+        cohorts.forEach(cohort=>module.exports.notify_cohort(cohort._id));
+      });
+      console.log('Pairs have been slacked');
   },
   cron_job: function(){
     console.log('Notification CRON initiated');
